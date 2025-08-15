@@ -17,7 +17,7 @@ ChartJS.register(
 );
 
 function App() {
-  // Chart data for global rice consumption
+  // Chart data
   const riceConsumptionData = {
     labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
     datasets: [
@@ -32,7 +32,6 @@ function App() {
     ],
   };
 
-  // Nutritional content comparison
   const nutritionalData = {
     labels: ['Carbohydrates', 'Protein', 'Fiber', 'Iron', 'Magnesium', 'B Vitamins'],
     datasets: [
@@ -53,7 +52,6 @@ function App() {
     ],
   };
 
-  // Health benefits pie chart
   const healthBenefitsData = {
     labels: ['Digestive Health', 'Heart Health', 'Energy Boost', 'Weight Management', 'Brain Function'],
     datasets: [
@@ -81,32 +79,37 @@ function App() {
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
+    plugins: { legend: { position: 'top' } },
+    scales: { y: { beginAtZero: true } },
   };
 
   const pieOptions = {
     responsive: true,
     maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: 'right',
-      },
-    },
+    plugins: { legend: { position: 'right' } },
   };
 
   return (
     <div className="app">
+      {/* ✅ Navbar */}
+      <nav className="navbar">
+        <div className="navbar-container">
+          <h1 className="logo">
+            <Wheat className="logo-icon" /> Rice Project
+          </h1>
+          <ul className="nav-links">
+            <li><a href="#hero" className="active">Home</a></li>
+            <li><a href="#about">About Rice</a></li>
+            <li><a href="#consumption">Consumption</a></li>
+            <li><a href="#nutrition">Nutrition</a></li>
+            <li><a href="#health">Health</a></li>
+            <li><a href="#stats">Statistics</a></li>
+          </ul>
+        </div>
+      </nav>
+
       {/* Hero Section */}
-      <section className="hero">
+      <section id="hero" className="hero">
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <Wheat className="hero-icon" />
@@ -118,7 +121,7 @@ function App() {
       </section>
 
       {/* About Rice Section */}
-      <section className="about-section">
+      <section id="about" className="about-section">
         <div className="container">
           <div className="section-header">
             <h2>Understanding Rice</h2>
@@ -148,13 +151,12 @@ function App() {
       </section>
 
       {/* Global Consumption Trends */}
-      <section className="chart-section">
+      <section id="consumption" className="chart-section">
         <div className="container">
           <div className="section-header">
             <h2>Global Rice Consumption Trends</h2>
             <p>Rice consumption continues to grow worldwide, reflecting its importance in global food security.</p>
           </div>
-          
           <div className="chart-container">
             <div className="chart-wrapper">
               <Line data={riceConsumptionData} options={chartOptions} />
@@ -164,13 +166,12 @@ function App() {
       </section>
 
       {/* Nutritional Benefits */}
-      <section className="nutrition-section">
+      <section id="nutrition" className="nutrition-section">
         <div className="container">
           <div className="section-header">
             <h2>Nutritional Powerhouse</h2>
             <p>Compare the nutritional profiles of different rice varieties and discover their health benefits.</p>
           </div>
-
           <div className="nutrition-grid">
             <div className="nutrition-chart">
               <h3>Nutritional Comparison</h3>
@@ -178,20 +179,17 @@ function App() {
                 <Bar data={nutritionalData} options={chartOptions} />
               </div>
             </div>
-
             <div className="health-benefits">
               <div className="benefit-card heart">
                 <Heart className="benefit-icon" />
                 <h4>Heart Health</h4>
                 <p>Brown rice contains compounds that help reduce cholesterol levels and support cardiovascular health through its high fiber and magnesium content.</p>
               </div>
-
               <div className="benefit-card energy">
                 <TrendingUp className="benefit-icon" />
                 <h4>Energy & Metabolism</h4>
                 <p>Rice provides sustained energy release and B-vitamins essential for metabolism, making it ideal for active lifestyles and athletic performance.</p>
               </div>
-
               <div className="benefit-card digestive">
                 <Leaf className="benefit-icon" />
                 <h4>Digestive Wellness</h4>
@@ -203,13 +201,12 @@ function App() {
       </section>
 
       {/* Health Benefits Distribution */}
-      <section className="health-section">
+      <section id="health" className="health-section">
         <div className="container">
           <div className="section-header">
             <h2>Health Improvement Areas</h2>
             <p>Research shows rice consumption contributes to various aspects of health and wellness.</p>
           </div>
-
           <div className="health-grid">
             <div className="pie-chart-container">
               <h3>Health Benefits Distribution</h3>
@@ -217,32 +214,18 @@ function App() {
                 <Pie data={healthBenefitsData} options={pieOptions} />
               </div>
             </div>
-
             <div className="research-findings">
               <div className="findings-card">
                 <h4>Research Findings</h4>
                 <ul className="findings-list">
-                  <li>
-                    <span className="bullet green"></span>
-                    Studies show that brown rice consumption can reduce type 2 diabetes risk by up to 16%
-                  </li>
-                  <li>
-                    <span className="bullet blue"></span>
-                    Whole grain rice intake is associated with 20% lower cardiovascular disease risk
-                  </li>
-                  <li>
-                    <span className="bullet purple"></span>
-                    Rice-based diets show improved cognitive function in aging populations
-                  </li>
+                  <li><span className="bullet green"></span>Studies show that brown rice consumption can reduce type 2 diabetes risk by up to 16%</li>
+                  <li><span className="bullet blue"></span>Whole grain rice intake is associated with 20% lower cardiovascular disease risk</li>
+                  <li><span className="bullet purple"></span>Rice-based diets show improved cognitive function in aging populations</li>
                 </ul>
               </div>
-
               <div className="future-improvements">
                 <h4>Future Improvements</h4>
-                <p>
-                  Biofortification programs are developing rice varieties with enhanced vitamin A, iron, and zinc content, 
-                  potentially reaching 1.5 billion people with improved nutrition by 2030.
-                </p>
+                <p>Biofortification programs are developing rice varieties with enhanced vitamin A, iron, and zinc content, potentially reaching 1.5 billion people with improved nutrition by 2030.</p>
               </div>
             </div>
           </div>
@@ -250,30 +233,17 @@ function App() {
       </section>
 
       {/* Key Statistics */}
-      <section className="stats-section">
+      <section id="stats" className="stats-section">
         <div className="container">
           <div className="section-header">
             <h2>Rice by the Numbers</h2>
             <p>Impressive statistics that showcase rice's global impact on nutrition and health.</p>
           </div>
-
           <div className="stats-grid">
-            <div className="stat-card">
-              <div className="stat-number">3.5B+</div>
-              <div className="stat-label">People depend on rice daily</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-number">20%</div>
-              <div className="stat-label">Of global caloric intake</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-number">40K+</div>
-              <div className="stat-label">Rice varieties worldwide</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-number">508M</div>
-              <div className="stat-label">Tons consumed annually</div>
-            </div>
+            <div className="stat-card"><div className="stat-number">3.5B+</div><div className="stat-label">People depend on rice daily</div></div>
+            <div className="stat-card"><div className="stat-number">20%</div><div className="stat-label">Of global caloric intake</div></div>
+            <div className="stat-card"><div className="stat-number">40K+</div><div className="stat-label">Rice varieties worldwide</div></div>
+            <div className="stat-card"><div className="stat-number">508M</div><div className="stat-label">Tons consumed annually</div></div>
           </div>
         </div>
       </section>
@@ -283,10 +253,7 @@ function App() {
         <div className="container">
           <Wheat className="footer-icon" />
           <h3>Rice: Nourishing the Future</h3>
-          <p>
-            Through continued research, sustainable farming practices, and nutritional improvements, 
-            rice remains central to global food security and human health advancement.
-          </p>
+          <p>Through continued research, sustainable farming practices, and nutritional improvements, rice remains central to global food security and human health advancement.</p>
           <div className="footer-credits">
             <p>&copy; 2025 Rice Improvement Initiative. Data sourced from FAO, WHO, and agricultural research institutions.</p>
           </div>
